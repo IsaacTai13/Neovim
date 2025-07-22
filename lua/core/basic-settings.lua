@@ -59,4 +59,4 @@ vim.opt.ignorecase = true
 -- When the path is too long, it triggers a “Press ENTER to continue” prompt before I can start editing — which is really annoying.
 -- To fix this, I used the following setting to suppress the echo of the full file path:
 -- Adding "F" prevents this message from appearing, so you won’t be interrupted with a “Press ENTER to continue” prompt every time you open a file.
-vim.opt.shortmess:append("F")
+vim.opt.shortmess:append("WF")

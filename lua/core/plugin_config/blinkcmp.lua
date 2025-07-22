@@ -61,8 +61,6 @@ blinkcmp.setup({
             }
           }
         },
-        min_width = 20,
-        max_width = 80,
         treesitter = { "lsp" },
       }
     },
