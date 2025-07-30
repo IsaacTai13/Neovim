@@ -146,7 +146,16 @@ require("lazy").setup({
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
-      require("core.plugin_config.colorscheme")
+      require("core.plugin_config.tokyonight_color")
+    end,
+  },
+
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      require("core.plugin_config.catppuccin_color")
     end,
   },
 
