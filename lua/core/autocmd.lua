@@ -20,3 +20,20 @@ vim.api.nvim_create_autocmd("FileType", {
 	  vim.opt_local.expandtab = false
 	end,
 })
+
+-- Automatically create missing parent directories before saving a file
+-- This ensures that when you try to write a file in a non-existent folder (e.g., :e models/user.js),
+-- the directory will be created automatically to prevent save errors like "E212: Can't open file for writing"
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    -- Get the absolute directory path of the current file being saved
+    local dir = vim.fn.expand("<afile>:p:h")
+
+    -- If the directory doesn't exist, create it (with -p flag to make parent folders as needed)
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, "p")
+    end
+  end,
+})
