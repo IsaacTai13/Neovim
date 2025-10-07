@@ -20,6 +20,7 @@ return {
 	html = {},
 	cssls = {},
 	eslint_d = {},
+  bashls = {},
 
 	lua_ls = {
 		-- cmd = { ... },
