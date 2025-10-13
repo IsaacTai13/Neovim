@@ -2,10 +2,11 @@
 vim.keymap.set("n", ",e", function()
   local path = vim.fn.expand('%:p:h') .. '/'
   vim.fn.feedkeys(':e ' .. path)
-end, { desc = "Edit new file in current directory" })
+end, { desc = ":e and append current filepath" })
+
 
 -- Rename the current file
-vim.keymap.set("n", "<leader>fr", function()
+vim.keymap.set("n", ",r", function()
   -- Get the full path of the current buffer's file
   local old_name = vim.api.nvim_buf_get_name(0)
 
@@ -27,3 +28,17 @@ vim.keymap.set("n", "<leader>fr", function()
     vim.cmd('bdelete ' .. old_name)
   end
 end, { desc = "Rename current file" })
+
+
+-- In insert mode, this mapping makes the ";" key "smart":
+-- If the character under the cursor is already a semicolon, pressing ";" will move the cursor to the right (skip it).
+-- Otherwise, it inserts a semicolon as usual.
+vim.keymap.set("i", ";", function()
+  local col = vim.fn.col('.')
+  local line = vim.fn.getline('.')
+  if line:sub(col, col) == ";" then
+    return "<Right>"
+  else
+    return ";"
+  end
+end, { expr = true, desc = "Jump over ; if already present" })
