@@ -16,13 +16,13 @@ mini_ai.setup({
 		-- Main textobject prefixes
 		around = 'a',
 		inside = 'i',
-	
+
 		-- Next/last variants
 		around_next = 'an',
 		inside_next = 'in',
 		around_last = 'al',
 		inside_last = 'il',
-	
+
 		-- Move cursor to corresponding edge of `a` textobject
 		goto_left = 'g[',
 		goto_right = 'g]',
@@ -45,18 +45,27 @@ mini_surround.setup({
 	  highlight = 'sh', -- Highlight surrounding
 	  replace = 'sr', -- Replace surrounding
 	  update_n_lines = 'sn', -- Update `n_lines`
-  
 	  suffix_last = 'l', -- Suffix to search with "prev" method
 	  suffix_next = 'n', -- Suffix to search with "next" method
 	},
-  
 	-- Number of lines within which surrounding is searched
 	n_lines = 20,
 })
 
 -- Simple and easy statusline
+-- Configure mini.statusline with Nerd Font icons and custom inactive window display
+-- For inactive windows, show relative file path instead of full path to keep the UI clean
 mini_statusline.setup({
 	use_icons = vim.g.have_nerd_font,
+
+  content = {
+    inactive = function ()
+      -- Display relative path from current working directory
+      -- This keeps the winbar concise when multiple splits are open
+      local filename = vim.fn.expand('%:~:.')
+      return ' ' .. filename .. ' '
+    end
+  }
 })
 
 -- Lightweight tool compare to nvim-autopairs
