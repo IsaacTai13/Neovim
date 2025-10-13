@@ -15,7 +15,6 @@ vim.opt.linebreak = true
 vim.opt.autoread = true
 vim.opt.ruler = true
 vim.opt.showtabline = 0
-vim.opt.shortmess = 'I'
 vim.opt.equalalways = true
 vim.opt.statusline = "%F"  -- Show full path in status line
 vim.opt.showbreak='↳ '
@@ -24,6 +23,13 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = 'full,full'
 vim.opt.previewheight = 15
 vim.opt.pumheight = 6      -- Set pop up windows max height
+
+-- When I open a file in Neovim, it automatically displays the full file path.
+-- When the path is too long, it triggers a “Press ENTER to continue” prompt before I can start editing — which is really annoying.
+-- To fix this, I used the following setting to suppress the echo of the full file path:
+-- Adding "F" prevents this message from appearing, so you won’t be interrupted with a “Press ENTER to continue” prompt every time you open a file.
+-- vim.opt.shortmess:append("WF")
+vim.opt.shortmess:append("IFW")
 
 
 vim.opt.backspace = '2'
@@ -55,8 +61,3 @@ vim.opt.incsearch = true
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
--- When I open a file in Neovim, it automatically displays the full file path.
--- When the path is too long, it triggers a “Press ENTER to continue” prompt before I can start editing — which is really annoying.
--- To fix this, I used the following setting to suppress the echo of the full file path:
--- Adding "F" prevents this message from appearing, so you won’t be interrupted with a “Press ENTER to continue” prompt every time you open a file.
-vim.opt.shortmess:append("WF")
