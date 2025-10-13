@@ -20,7 +20,11 @@ return {
 	html = {},
 	cssls = {},
 	eslint_d = {},
+  emmet_ls = {},
   bashls = {},
+  terraformls = {},
+  tflint = {},
+  marksman = {},
 
 	lua_ls = {
 		-- cmd = { ... },
