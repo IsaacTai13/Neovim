@@ -6,6 +6,7 @@ catppuccin.setup({
         light = "latte",
         dark = "mocha",
   },
+  no_italic = true,
 })
 
 vim.cmd.colorscheme 'catppuccin'

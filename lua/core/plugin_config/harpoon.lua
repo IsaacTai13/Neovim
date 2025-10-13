@@ -33,3 +33,7 @@ map('<leader>m2', function() ui.nav_file(2) end, '[M]ark file 2')
 map('<leader>m3', function() ui.nav_file(3) end, '[M]ark file 3')
 map('<leader>m4', function() ui.nav_file(4) end, '[M]ark file 4')
 map('<leader>md', function() helper.input_prompt('Enter mark index to remove: ', RemoveMark) end, '[M]ark [D]elete specific mark')
+
+map(',m', ui.toggle_quick_menu, '[M]ark [M]enu')
+map(',n', ui.nav_next, '[M]ark [N]ext file')
+map(',p', ui.nav_prev, '[M]ark [P]revious file')

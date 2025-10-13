@@ -64,3 +64,5 @@ todo.setup{
     -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
   }
 }
+
+vim.keymap.set('n', "<leader>st", function() vim.cmd("TodoTelescope") end, { desc = "[S]earch [T]odo" } )

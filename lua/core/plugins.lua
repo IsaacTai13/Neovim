@@ -200,7 +200,7 @@ require("lazy").setup({
   },
 
   -- Productivity
-  { 
+  {
     "ThePrimeagen/harpoon",
     config = function()
       require("core.plugin_config.harpoon")
@@ -208,7 +208,7 @@ require("lazy").setup({
   },
 
   -- Copilot
-  { 
+  {
     "github/copilot.vim",
     config = function()
       require("core.plugin_config.copilot")
@@ -231,6 +231,15 @@ require("lazy").setup({
     end
   },
 
+  -- autopair plugin support multiple character
+  -- {
+  --   "windwp/nvim-autopairs",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("core.plugin_config.autopair")
+  --   end,
+  -- },
+
   -- UI Enhancements
   -- { "bluz71/vim-nightfly-guicolors" },
   -- { "ellisonleao/gruvbox.nvim" },
@@ -249,7 +258,7 @@ require("lazy").setup({
   -- { "tpope/vim-commentary" },
   -- { "jiangmiao/auto-pairs" },
   -- { "airblade/vim-gitgutter" },
-  
+
   -- { "mbbill/undotree" },
 
   -- Git Tools
