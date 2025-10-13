@@ -1,4 +1,5 @@
-local winbar_status, winbar = pcall(require, "winbar")
+local helper = require("core.helper")
+local winbar = helper.safe_require("winbar")
 
 winbar.setup({
     enabled = true,
@@ -7,9 +8,9 @@ winbar.setup({
     show_symbols = true,
 
     colors = {
-        path = '', -- You can customize colors like #c946fd
-        file_name = '',
-        symbols = '',
+        path = "#6d8086",
+        file_name = "#61afef",
+        symbols = "#e5c07b",
     },
 
     icons = {
@@ -23,7 +24,6 @@ winbar.setup({
         'help',
         'startify',
         'dashboard',
-        'packer',
         'neogitstatus',
         'NvimTree',
         'Trouble',
@@ -33,7 +33,8 @@ winbar.setup({
         'spectre_panel',
         'toggleterm',
         'qf',
-    }
+        'floaterm',
+    },
 })
 
 -- try to disable winbar in floaterm
