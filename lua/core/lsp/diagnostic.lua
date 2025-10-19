@@ -26,3 +26,8 @@ vim.diagnostic.config {
 		end,
 	},
 }
+
+-- Show detailed diagnostic message in a floating window.
+-- Use this when an error message is too long or gets truncated.
+-- Example: press <leader>d to open a popup with the full warning or error.
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = '[L]SP [D]iagnostic details' })

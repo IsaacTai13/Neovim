@@ -26,6 +26,7 @@ return {
   tflint = {},
   marksman = {},
   jdtls = {},
+  dockerls = {},
 
 	lua_ls = {
 		-- cmd = { ... },
