@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = indent_augroup,
-	pattern = { "go" },
+	pattern = { "go", "java" },
 	callback = function()
 	  vim.opt_local.tabstop = 4
 	  vim.opt_local.shiftwidth = 4

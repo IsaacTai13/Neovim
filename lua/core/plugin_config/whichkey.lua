@@ -82,6 +82,7 @@ wk.setup {
     { "<leader>h", group = "[H]unk (Git)"},
     { "<leader>c", group = "[C]opilot"},
     { "<leader>t", group = "[T]oggle Term"},
+    { "<leader>j", group = "[J]ava"},
   },
 }
 

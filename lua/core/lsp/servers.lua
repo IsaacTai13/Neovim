@@ -25,6 +25,7 @@ return {
   terraformls = {},
   tflint = {},
   marksman = {},
+  jdtls = {},
 
 	lua_ls = {
 		-- cmd = { ... },
