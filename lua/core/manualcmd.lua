@@ -42,3 +42,15 @@ vim.keymap.set("i", ";", function()
     return ";"
   end
 end, { expr = true, desc = "Jump over ; if already present" })
+
+
+-- Reload Neovim configuration with notification
+vim.keymap.set('n', '<leader>r', function()
+  vim.cmd('source $MYVIMRC')
+  vim.notify("✓ Config reloaded!", vim.log.levels.INFO)
+end, { desc = 'Reload config' })
+
+
+-- Issue: When creating a new file in an already-open Neovim session, syntax highlighting
+-- Solution: Manually reload buffer to trigger Treesitter (useful for new files)
+vim.keymap.set('n', ',t', ':edit<CR>', { desc = 'Reload buffer (trigger Treesitter)' })

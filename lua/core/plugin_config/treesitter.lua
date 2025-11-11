@@ -6,7 +6,7 @@ vim.treesitter.language.register("tsx", "javascriptreact")
 
 treesitter.setup ({
   ensure_installed = {
-    "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "javascript", "typescript", "dockerfile", "yaml", "json", "tsx", "css"
+    "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc", "javascript", "typescript", "dockerfile", "yaml", "json", "tsx", "css", "terraform"
   },
   highlight = {
     enable = true,
