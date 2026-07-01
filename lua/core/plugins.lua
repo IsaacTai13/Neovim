@@ -67,6 +67,7 @@ require("lazy").setup({
   },
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" }, -- Only load LSP when a real file is opened
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
@@ -162,6 +163,7 @@ require("lazy").setup({
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
+    lazy = true, -- Not the active colorscheme (catppuccin is), so don't load at startup
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       require("core.plugin_config.tokyonight_color")
@@ -183,6 +185,7 @@ require("lazy").setup({
   -- Collection of various small independent plugins/modules
   {
     "echasnovski/mini.nvim",
+    event = "VimEnter", -- Defer to just after startup (statusline still shows immediately)
     config = function()
       require("core.plugin_config.mini")
     end,
@@ -191,6 +194,7 @@ require("lazy").setup({
   -- Highlight, edit, and navigate code
   {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" }, -- Load once a file buffer is opened
     build = ":TSUpdate",
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     config = function()
@@ -220,6 +224,12 @@ require("lazy").setup({
   -- Productivity
   {
     "ThePrimeagen/harpoon",
+    keys = { -- Load on first use of any harpoon mapping
+      "<leader>ma", "<leader>mr", "<leader>mc", "<leader>mm",
+      "<leader>mn", "<leader>mp", "<leader>md",
+      "<leader>m1", "<leader>m2", "<leader>m3", "<leader>m4",
+      ",m", ",n", ",p",
+    },
     config = function()
       require("core.plugin_config.harpoon")
     end,
@@ -228,6 +238,10 @@ require("lazy").setup({
   -- Copilot
   {
     "github/copilot.vim",
+    event = "InsertEnter", -- suggestions are only needed once you start typing
+    -- Also load on the normal-mode toggle maps so they work before any insert.
+    -- No desc needed: the real keymaps (and there's no desc on them) live in copilot.lua.
+    keys = { "<leader>ce", "<leader>cd", "<leader>ct", "<leader>cs", "<leader>cp" },
     config = function()
       require("core.plugin_config.copilot")
     end
@@ -244,7 +258,10 @@ require("lazy").setup({
 
   -- Quickly switch between terminals
   {
-    'akinsho/toggleterm.nvim', version = "*", config = function ()
+    'akinsho/toggleterm.nvim', version = "*",
+    cmd = "ToggleTerm",
+    keys = { "<leader>tb", "<leader>tg" }, -- Toggle term / lazygit
+    config = function ()
       require("core.plugin_config.toggleterm")
     end
   },
@@ -252,6 +269,7 @@ require("lazy").setup({
   -- Markdown Support in nvim natively
   {
     'MeanderingProgrammer/render-markdown.nvim',
+    ft = "markdown", -- Only load for markdown files
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons

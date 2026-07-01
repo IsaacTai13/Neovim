@@ -49,11 +49,12 @@ keymap("i", "<C-\\>", "copilot#Suggest()", { expr = true, replace_keycodes = fal
 keymap("i", "<C-]>", "copilot#Dismiss()", { expr = true, replace_keycodes = false })
 
 -- Normal mode keybindings
-keymap("n", "<leader>ce", ":Copilot enable<CR>", opts)   -- Enable Copilot
-keymap("n", "<leader>cd", ":Copilot disable<CR>", opts)  -- Disable Copilot
-keymap("n", "<leader>ct", ":Copilot toggle<CR>", opts)   -- Toggle Copilot
-keymap("n", "<leader>cs", ":Copilot status<CR>", opts)   -- Check Copilot status
-keymap("n", "<leader>cp", ":Copilot panel<CR>", opts)    -- Open Copilot panel
+-- desc drives the which-key label (shown after copilot loads); opts keeps noremap/silent.
+keymap("n", "<leader>ce", ":Copilot enable<CR>", vim.tbl_extend("force", opts, { desc = "Copilot enable" }))
+keymap("n", "<leader>cd", ":Copilot disable<CR>", vim.tbl_extend("force", opts, { desc = "Copilot disable" }))
+keymap("n", "<leader>ct", ":Copilot toggle<CR>", vim.tbl_extend("force", opts, { desc = "Copilot toggle" }))
+keymap("n", "<leader>cs", ":Copilot status<CR>", vim.tbl_extend("force", opts, { desc = "Copilot status" }))
+keymap("n", "<leader>cp", ":Copilot panel<CR>", vim.tbl_extend("force", opts, { desc = "Copilot panel" }))
 
 -- Auto commands
 local copilot_group = vim.api.nvim_create_augroup("CopilotConfig", { clear = true })
