@@ -2,6 +2,15 @@
 vim.g.mapleader = " " -- map <Space> as leader key
 vim.g.maplocalleader = " "
 
+-- Disable unused language providers. These are only needed by remote plugins
+-- written in python/ruby/perl/node (via pynvim etc.) -- we use none of them.
+-- The python3 provider in particular was probing the (slow) pyenv shim on every
+-- .py file open, adding ~700ms. Turning it off keeps .py files as fast as any other.
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+
 -- Appearance
 vim.opt.cmdheight = 1
 vim.opt.relativenumber = true
