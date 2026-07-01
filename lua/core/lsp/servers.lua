@@ -15,11 +15,14 @@ return {
 	--    https://github.com/pmizio/typescript-tools.nvim
 	--
 	-- But for many setups, the LSP (`ts_ls`) will work just fine
+	-- NOTE: This table is for LSP *servers* only. Formatters (stylua, shfmt) and
+	-- linters (eslint_d) are NOT LSP servers -- they live in conform.nvim /
+	-- mason-tool-installer.lua instead. Putting eslint_d here made mason-lspconfig
+	-- try to start it as an LSP, which is wrong.
 	ts_ls = {},
 	jsonls = {},
 	html = {},
 	cssls = {},
-	eslint_d = {},
   emmet_ls = {},
   bashls = {},
   terraformls = {},

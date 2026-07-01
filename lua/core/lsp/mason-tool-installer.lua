@@ -18,7 +18,11 @@ local servers = require("core.lsp.servers")
 -- for you, so that they are available from within Neovim.
 local ensure_installed = vim.tbl_keys(servers or {})
 vim.list_extend(ensure_installed, {
-	'stylua', -- Used to format Lua code
+	-- Formatters & linters (NOT LSP servers). These are invoked by conform.nvim,
+	-- not started as language servers. See lua/core/plugin_config/conform.lua.
+	'stylua',   -- Lua formatter
+	'shfmt',    -- Shell/bash formatter
+	'eslint_d', -- JS/TS linter + fixer
 })
 
 -- use mason_tool_installer to install all the tools at once including (lsp server, formatter and DAP)

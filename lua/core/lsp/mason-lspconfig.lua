@@ -5,7 +5,14 @@ local servers = require("core.lsp.servers")
 
 mason_lspconfig.setup({
 	ensure_installed = {}, -- explicitly set to an empty table (we already handled this via mason-tool-installer)
-	automatic_enable = true;
+
+	-- nvim-lspconfig now ships an `lsp/stylua.lua` that runs `stylua --lsp`, and
+	-- automatic_enable would start it because stylua is installed via mason. But
+	-- stylua is a *formatter*, not an LSP server (our 2.1.0 has no --lsp), so it
+	-- crashes with exit code 2. Exclude it (and other formatters) from auto-enable.
+	automatic_enable = {
+		exclude = { 'stylua' },
+	},
 
 	-- To only enable certain servers to be automatically enabled:
 	-- automatic_enable = vim.tbl_keys(servers),

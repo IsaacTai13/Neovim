@@ -125,8 +125,26 @@ require("lazy").setup({
     end
   },
 
-  -- Autoformat
-  -- { "stevearc/conform.nvim" }
+  -- Autoformat: conform.nvim runs external formatters (stylua, shfmt, ...) that
+  -- were installed via mason. It is the piece that actually "wakes up" stylua.
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" }, -- load in time for format-on-save
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>F",
+        function()
+          require("conform").format({ async = true, lsp_format = "fallback" })
+        end,
+        mode = { "n", "v" },
+        desc = "[F]ormat buffer",
+      },
+    },
+    config = function()
+      require("core.plugin_config.conform")
+    end,
+  },
 
   -- WhichKey
   { 
